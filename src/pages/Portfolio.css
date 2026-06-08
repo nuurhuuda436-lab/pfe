@@ -1,0 +1,465 @@
+/* ============================================
+   Portfolio Page — Candidate's Work Gallery
+   ============================================ */
+
+/* ── Header ── */
+.portfolio-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.portfolio-page-header h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-text);
+  margin: 0 0 var(--space-1) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.portfolio-page-header p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  margin: 0;
+}
+
+/* ── Add Form Card ── */
+.portfolio-add-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  margin-bottom: var(--space-8);
+  box-shadow: var(--shadow-sm);
+}
+
+.portfolio-add-card h2 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0 0 var(--space-6) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ── Image Upload Zone ── */
+.portfolio-upload-zone {
+  border: 2px dashed var(--color-border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  background: rgba(37, 99, 235, 0.02);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+}
+
+.portfolio-upload-zone:hover {
+  border-color: var(--color-primary);
+  background: rgba(37, 99, 235, 0.05);
+}
+
+.portfolio-upload-zone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio-upload-icon {
+  font-size: 3rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+  display: block;
+}
+
+.portfolio-upload-text {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-1);
+  font-weight: var(--font-weight-medium);
+}
+
+.portfolio-upload-hint {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.portfolio-preview-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.portfolio-preview-img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  display: block;
+}
+
+.portfolio-preview-remove {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  background: rgba(220, 38, 38, 0.85);
+  border: none;
+  color: white;
+  border-radius: var(--radius-full);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: background var(--transition-fast);
+}
+
+.portfolio-preview-remove:hover {
+  background: #b91c1c;
+}
+
+/* ── Form Row ── */
+.portfolio-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+@media (max-width: 640px) {
+  .portfolio-form-row { grid-template-columns: 1fr; }
+}
+
+/* ── Posts Gallery Grid ── */
+.portfolio-posts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.portfolio-posts-header h2 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.portfolio-posts-count {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid var(--color-border);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-semibold);
+}
+
+.portfolio-gallery {
+  /* Instagram-like square grid — larger tiles for better visibility */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* ── Post Card ── */
+.portfolio-post-card {
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+}
+
+.portfolio-post-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.portfolio-post-img-wrap {
+  position: relative;
+  overflow: hidden;
+  /* make square: height = width via aspect-ratio */
+  aspect-ratio: 1 / 1;
+  background: var(--color-bg-tertiary);
+}
+
+.portfolio-post-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s cubic-bezier(.2,.8,.2,1), filter 0.3s ease;
+}
+
+.portfolio-post-card:hover .portfolio-post-img {
+  transform: scale(1.12);
+  filter: saturate(1.05) contrast(1.02);
+}
+
+/* Status badge overlay */
+.portfolio-status-overlay {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 2;
+}
+
+.portfolio-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(8px);
+}
+
+.portfolio-status-badge.pending {
+  background: rgba(245, 158, 11, 0.9);
+  color: #fff;
+}
+
+.portfolio-status-badge.approved {
+  background: rgba(16, 185, 129, 0.9);
+  color: #fff;
+}
+
+.portfolio-status-badge.rejected {
+  background: rgba(220, 38, 38, 0.9);
+  color: #fff;
+}
+
+/* Overlay on hover */
+.portfolio-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 180ms ease, transform 180ms ease;
+  z-index: 1;
+}
+
+.portfolio-post-card:hover .portfolio-img-overlay {
+  opacity: 1;
+}
+
+.portfolio-view-btn {
+  background: rgba(255, 255, 255, 0.98);
+  color: #0f172a;
+  border: none;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(16,24,40,0.06);
+}
+
+.portfolio-view-btn:hover {
+  background: white;
+  transform: scale(1.05);
+}
+
+/* Card Body */
+
+.portfolio-post-body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.62) 100%);
+  color: white;
+  transform: translateY(36%);
+  transition: transform 0.28s cubic-bezier(.2,.9,.2,1), opacity 0.28s ease;
+  opacity: 0;
+}
+
+.portfolio-post-card:hover .portfolio-post-body {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.portfolio-post-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  color: #ffffff;
+}
+
+.portfolio-post-desc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.96);
+  margin: 0;
+  line-height: 1.35;
+  display: block;
+  max-height: 4.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.portfolio-post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.portfolio-post-date {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.9);
+}
+
+.portfolio-delete-btn {
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  color: var(--color-error);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.portfolio-delete-btn:hover {
+  background: rgba(220, 38, 38, 0.15);
+  border-color: var(--color-error);
+}
+
+/* ── Lightbox modal ── */
+.portfolio-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: var(--space-4);
+  backdrop-filter: blur(6px);
+}
+
+.portfolio-lightbox-inner {
+  position: relative;
+  max-width: 1100px;
+  width: 100%;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--color-bg-secondary);
+}
+
+.portfolio-lightbox-img {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  display: block;
+}
+
+.portfolio-lightbox-info {
+  padding: var(--space-5) var(--space-6);
+}
+
+.portfolio-lightbox-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.portfolio-lightbox-desc {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.portfolio-lightbox-close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: background var(--transition-fast);
+  z-index: 1;
+}
+
+.portfolio-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Empty State ── */
+.portfolio-empty {
+  text-align: center;
+  padding: var(--space-20) var(--space-8);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+}
+
+.portfolio-empty-icon {
+  font-size: 4rem;
+  margin-bottom: var(--space-4);
+  opacity: 0.4;
+}
+
+.portfolio-empty h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.portfolio-empty p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .portfolio-gallery { grid-template-columns: 1fr; }
+  .portfolio-page-header { flex-direction: column; }
+}

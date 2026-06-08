@@ -1,0 +1,195 @@
+/* ============================================
+   Forms
+   ============================================ */
+
+.form-group {
+  margin-bottom: var(--space-6);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+  letter-spacing: 0.02em;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  background: #ffffff;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: var(--radius-xl);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-base);
+  outline: none;
+  box-shadow: inset 0 1px 3px rgba(37, 99, 235, 0.06);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: rgba(37, 99, 235, 0.50);
+  background: #ffffff;
+  box-shadow: inset 0 1px 3px rgba(37, 99, 235, 0.06), 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3e%3cpath fill='%2364748b' d='M6 8.825L1.175 4 2.238 2.938 6 6.7l3.763-3.762L10.825 4z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  padding-right: var(--space-12);
+}
+
+.form-select option {
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+}
+
+body.dark-theme .form-select {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+}
+
+/* Clean form variant (used in Register) */
+.auth-form-clean .form-group-clean {
+  margin-bottom: var(--space-4);
+}
+
+.form-input-clean {
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  background: #ffffff;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: var(--radius-xl);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-base);
+  outline: none;
+}
+
+.form-input-clean:focus {
+  border-color: rgba(37, 99, 235, 0.50);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-input-clean::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ============================================
+   Dark Theme Overrides for Forms
+   ============================================ */
+
+body.dark-theme .form-input,
+body.dark-theme .form-select,
+body.dark-theme .form-textarea {
+  background: var(--color-bg-secondary);
+  border-color: rgba(20, 168, 0, 0.18);
+  color: #f8fafc;
+}
+
+body.dark-theme .form-input:focus,
+body.dark-theme .form-select:focus,
+body.dark-theme .form-textarea:focus {
+  border-color: rgba(20, 168, 0, 0.50);
+  background: var(--color-bg-secondary);
+  box-shadow: inset 0 1px 3px rgba(20, 168, 0, 0.06), 0 0 0 3px rgba(20, 168, 0, 0.12);
+}
+
+body.dark-theme .form-input::placeholder,
+body.dark-theme .form-textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+body.dark-theme .form-input-clean {
+  background: var(--color-bg-secondary);
+  border-color: rgba(20, 168, 0, 0.18);
+  color: #f8fafc;
+}
+
+body.dark-theme .form-input-clean:focus {
+  border-color: rgba(20, 168, 0, 0.50);
+  background: var(--color-bg-secondary);
+  box-shadow: 0 0 0 3px rgba(20, 168, 0, 0.12);
+}
+
+body.dark-theme .form-input-clean::placeholder {
+  color: var(--color-text-muted);
+}
+
+body.dark-theme .form-select option {
+  background: var(--color-bg-secondary);
+  color: #f8fafc;
+}
+
+/* Form options row (remember me + forgot link) */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.forgot-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.forgot-link:hover {
+  color: var(--color-primary);
+}
+
+/* Map / Address row (OffreForm) */
+.adresse-search-row {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.map-container-offre {
+  margin-top: var(--space-4);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+}
+
+.offre-map {
+  width: 100%;
+  height: 360px;
+}
+
+.map-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  color: var(--color-text-secondary);
+}

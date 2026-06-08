@@ -1,0 +1,137 @@
+.portfolio-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.portfolio-feed-count {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.portfolio-feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.portfolio-feed-post {
+  background: var(--color-bg-card, #fff);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.portfolio-feed-post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-secondary, #f8fafc);
+}
+
+.portfolio-feed-post-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.portfolio-feed-post-image {
+  width: 100%;
+  background: var(--color-bg-tertiary);
+  max-height: 520px;
+  overflow: hidden;
+}
+
+.portfolio-feed-post-image img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  display: block;
+}
+
+.portfolio-feed-post-body {
+  padding: 18px 20px 20px;
+}
+
+.portfolio-feed-post-title {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.portfolio-feed-post-desc {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+}
+
+.portfolio-feed-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+}
+
+.portfolio-feed-page-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card, #fff);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.portfolio-feed-page-btn:hover:not(:disabled) {
+  border-color: var(--color-primary, #2563eb);
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.portfolio-feed-page-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.portfolio-feed-page-info {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  min-width: 120px;
+  text-align: center;
+}
+
+.portfolio-feed-loader {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.portfolio-feed-empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--color-text-muted);
+  background: var(--color-bg-secondary);
+  border-radius: 12px;
+  border: 1px dashed var(--color-border);
+}
+
+.portfolio-feed-empty p {
+  margin: 12px 0 0;
+}

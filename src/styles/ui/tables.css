@@ -1,0 +1,70 @@
+/* ============================================
+   Tables
+   ============================================ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+table thead {
+  background: rgba(20, 168, 0, 0.08);
+  border-bottom: 2px solid var(--color-border-light);
+}
+
+table th {
+  padding: var(--space-4) var(--space-5);
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+table td {
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+table tbody tr {
+  transition: background-color var(--transition-base);
+}
+
+table tbody tr:hover {
+  background: rgba(20, 168, 0, 0.04);
+}
+
+table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Striped rows */
+table tbody tr:nth-child(even) {
+  background: rgba(20, 168, 0, 0.02);
+}
+
+body.dark-theme table tbody tr:nth-child(even) {
+  background: rgba(20, 168, 0, 0.04);
+}
+
+/* Responsive tables */
+@media (max-width: 768px) {
+  table {
+    font-size: 0.85rem;
+  }
+
+  table th,
+  table td {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  table th {
+    font-size: var(--font-size-xs);
+  }
+}

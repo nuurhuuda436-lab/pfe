@@ -1,0 +1,76 @@
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import api from '../api';
+import { FiMail, FiClock, FiUser, FiCheck, FiX, FiImage, FiEye, FiPhone } from 'react-icons/fi';
+import SafeImage from '../components/ui/SafeImage';
+import './CandidaturesRecruteur.css';
+
+// Minimal, clean implementation to restore page and ensure build success.
+export default function CandidaturesRecruteur() {
+  const { t, i18n } = useTranslation();
+  const [candidatures, setCandidatures] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const res = await api.get('/candidatures-recues');
+        if (mounted) setCandidatures(res.data || []);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    })();
+    return () => { mounted = false; };
+  }, []);
+
+  if (loading) return <div className="page-wrapper"><div className="loader-wrapper"><div className="loader"></div></div></div>;
+
+  return (
+    <div className="page-wrapper recruiter-dashboard">
+      <div className="container">
+        <div className="recruiter-layout">
+          <div className="recruiter-content">
+            <div className="page-header">
+              <h1>{t('recruiter_apps.title', 'Candidatures Reçues')}</h1>
+            </div>
+
+            <div className="candidatures-list" style={{ display: 'grid', gap: 20 }}>
+              {candidatures.length === 0 ? (
+                <div className="empty-state">
+                  <FiUser size={40} />
+                  <p>{t('recruiter_apps.empty_desc', 'Vous n\'avez pas encore reçu de candidatures.')}</p>
+                </div>
+              ) : candidatures.map(c => (
+                <div key={c.id} className="card">
+                  <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+                    {c.user?.profil?.photo_path ? (
+                      <SafeImage src={`http://localhost:8000/storage/${c.user.profil.photo_path}`} alt={c.user?.nom} style={{ width: 64, height: 64, borderRadius: '50%' }} />
+                    ) : (
+                      <div style={{ width: 64, height: 64, borderRadius: '50%', background: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{c.user?.nom?.charAt(0) || 'U'}</div>
+                    )}
+
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <strong>{c.user?.nom}</strong>
+                        <span style={{ fontSize: 12, color: '#666' }}>{new Date(c.created_at).toLocaleDateString()}</span>
+                      </div>
+                      <div style={{ marginTop: 8 }}>
+                        <p style={{ margin: 0, fontStyle: 'italic' }}>{c.motivation}</p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

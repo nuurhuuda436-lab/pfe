@@ -1,0 +1,38 @@
+.portfolio-public-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-bottom: 48px;
+}
+
+.portfolio-public-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: var(--color-primary, #2563eb);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.portfolio-public-header {
+  margin-bottom: 28px;
+}
+
+.portfolio-public-header h1 {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.portfolio-public-header p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}

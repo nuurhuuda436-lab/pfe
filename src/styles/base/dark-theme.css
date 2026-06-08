@@ -1,0 +1,65 @@
+/* ============================================
+   Dark Theme — body.dark-theme overrides
+============================================ */
+
+body.dark-theme {
+  --color-bg: #0a1408;
+  --color-bg-secondary: rgba(20, 30, 20, 0.95);
+  --color-bg-tertiary: #141f14;
+
+  --color-bg-card: rgba(20, 30, 20, 0.72);
+  --color-bg-card-hover: rgba(20, 30, 20, 0.86);
+  --color-border: rgba(20, 168, 0, 0.18);
+  --color-border-light: rgba(20, 168, 0, 0.30);
+  --glass-blur: blur(24px);
+
+  --color-text: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-inverse: #0a1408;
+
+  --color-primary: #14a800;
+  --color-primary-light: #3cde21;
+  --color-primary-dark: #108500;
+  --color-primary-hover: #108500;
+
+  --color-secondary: #14a800;
+  --color-secondary-light: #3cde21;
+
+  background-image: none;
+}
+
+/* Skill tags */
+body.dark-theme .upw-skill-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #d1d5db;
+}
+
+body.dark-theme .upw-skill-tag:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+/* Category title */
+body.dark-theme .upw-skill-category h4 {
+  color: #fff;
+}
+body.dark-theme .upw-skill-category {
+  margin-bottom: var(--space-8);
+}
+body.dark-theme .upw-skills-container {
+  padding: var(--space-8);
+  color: #f8fafc;
+}
+body.dark-theme .upw-split-header {
+  text-align: center;
+  margin-bottom: var(--space-16);
+  color: #ffffff;
+}
+body.dark-theme .upw-roles-card {
+  background: linear-gradient(145deg, #102a15 0%, #0a1408 100%);
+  border-radius: 24px;
+  padding: var(--space-8);
+  border: 1px solid rgba(20, 168, 0, 0.2);
+}
